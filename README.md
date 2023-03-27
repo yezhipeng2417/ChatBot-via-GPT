@@ -84,3 +84,34 @@ curl --location 'http://127.0.0.1:8000/query' \
     "error": null
 }
 ```
+
+## Relevence model
+**Input**: -> ['Question', 'Answer']
+
+**output**: -> 0 or 1 label (if 'Question' and 'Answer' are revelent)
+
+**Features**:
+    
+* bert context similarity (2 dims)
+* question and answer sentence embeddings cosine simliarty (1 dim)
+* question and answer sentence embeddings compress to 2-dim vector each and concat (4 dims)
+
+7-dim features in total and feed in Fully connection layer and get 2-dim output, use the second-dim as its score 
+
+## Data Source
+```
+@inproceedings{yang-etal-2015-wikiqa,
+    title = "{W}iki{QA}: A Challenge Dataset for Open-Domain Question Answering",
+    author = "Yang, Yi  and
+      Yih, Wen-tau  and
+      Meek, Christopher",
+    booktitle = "Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing",
+    month = sep,
+    year = "2015",
+    address = "Lisbon, Portugal",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/D15-1237",
+    doi = "10.18653/v1/D15-1237",
+    pages = "2013--2018",
+}
+```
