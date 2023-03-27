@@ -24,7 +24,7 @@ This project creates an application via openai GPT3.5 API to generate text based
 * **.gitignore**
 * **README.md**
 
-### Download model file from following link and put it at **ckpt_model/latest.ckpt**
+### Download model file from the following link and put it at **ckpt_model/latest.ckpt**
 
 **model file url**: https://drive.google.com/drive/folders/1sl-QlkxevvUGLlB1hJHd0Gj6tz3Fw4ZK?usp=share_link
 ## Install and Run
@@ -117,11 +117,11 @@ curl --location 'http://127.0.0.1:8000/query' \
 
 ## More Future Works
 * Compress the relevance model to improve inference speed, or use onnx to accelerate model inference.
-* Try more word-level feature on relevance model, such as, tfidf, bm25 etc..
-* Train it on more data sources for training relevance model.
+* Try more word-level features on relevance model, such as, tfidf, bm25 etc..
+* Train the relevance model on more data sources.
 * Try more hyperparameters when training relevance model.
-* Figure out all of the openai API error types, and handle exceptions more precisely.
-* Multi-language relevance model.
+* Figure out all of the openai API error types in order to handle exceptions more precisely.
+* Support Multi-language.
 
 ## Data Source
 ```
