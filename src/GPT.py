@@ -26,7 +26,10 @@ class GPT:
                 ]
             )
             response = [i['message']['content'] for i in completion.choices]
-            return True, response
+            score = qaInference.inference([[content]*len(response), response])
+            ret = [{'response': r, 'score': float(s)} for r, s in zip(response, score)]
+            ret.sort(key=lambda x: x['score'], reverse=True)
+            return True, ret
         except Exception as e:
             return False, e
 
