@@ -2,28 +2,31 @@
 ## Info
 This project creates a application via openai GPT3.5 API to generate text based on user's input. It will return most relevent answers.
 
-Characterisics:
+### Project Features:
 
 * The application is based on python 
 * Access to openai GPT3.5 api
 * It will generate proper answers based on any user's input: topic, questions, prompt, etc..
 * It handles some error cases.
-* It handles user's input with Spelling errors and grammatical errors
-* It will return sorted answers by relevence.
+* It handles spelling errors and grammatical errors in user's input.
+* It will return sorted answers by relevance.
 * Well documented
 
 
 ## Project Dir
 * **data** - data files for training revelence_model.py
-* **ckpt_model** - relevence_model file
+* **ckpt_model** - relevance_model file
 * **src** - source code
     - **app.py** - server file exposing chat API
     - **GPT.py** - A class calling openai API
-    - **relevence_model.py** - model, dataset, inference
-    - **trainer.py** - relevence model trainer
+    - **relevance_model.py** - model, dataset, inference
+    - **trainer.py** - relevance model trainer
 * **.gitignore**
 * **README.md**
 
+### Download model file from following link and put it in **ckpt_model/latest.ckpt**
+
+**model file url**: https://drive.google.com/drive/folders/1sl-QlkxevvUGLlB1hJHd0Gj6tz3Fw4ZK?usp=share_link
 ## Install and Run
 ```python
 # create conda envs
@@ -99,7 +102,7 @@ curl --location 'http://127.0.0.1:8000/query' \
 }
 ```
 
-## Relevence model
+## Relevance model
 **Input**: -> ['Question', 'Answer']
 
 **output**: -> 0 or 1 label (if 'Question' and 'Answer' are revelent)
@@ -111,6 +114,14 @@ curl --location 'http://127.0.0.1:8000/query' \
 * question and answer sentence embeddings compress to 2-dim vector each and concat (4 dims)
 
 7-dim features in total and feed in Fully connection layer and get 2-dim output, use the second-dim as its score 
+
+## More Future Works
+* Compress the relevance model to improve inference speed, or use onnx to accelerate model inference.
+* Try more word-level feature on relevance model, such as, tfidf, bm25 etc..
+* Train it on more data sources for training relevance model.
+* Try more hyperparameters when training relevance model.
+* Figure out all of the openai API error types, and handle exceptions more precisely.
+* multi-language relevance model.
 
 ## Data Source
 ```
@@ -129,9 +140,3 @@ curl --location 'http://127.0.0.1:8000/query' \
     pages = "2013--2018",
 }
 ```
-
-## Future Works
-* Try more word-level feature on relevence model, such as, tfidf, bm25 etc..
-* Train it on more data sources for training relevence model.
-* Try more hyperparameters when training relevence model.
-* Figure out all of the openai API error types, and handle exceptions more precisely.
