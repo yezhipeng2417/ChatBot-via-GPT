@@ -1,4 +1,18 @@
 # ChatBot-via-GPT
+## Info
+This project creates a application via openai GPT3.5 API to generate text based on user's input. It will return most relevent answers.
+
+Characterisics:
+
+* The application is based on python 
+* Access to openai GPT3.5 api
+* It will generate proper answers based on any user's input: topic, questions, prompt, etc..
+* It handles some error cases.
+* It handles user's input with Spelling errors and grammatical errors
+* It will return sorted answers by relevence.
+* Well documented
+
+
 ## Project Dir
 * **data** - data files for training revelence_model.py
 * **ckpt_model** - relevence_model file
@@ -115,3 +129,9 @@ curl --location 'http://127.0.0.1:8000/query' \
     pages = "2013--2018",
 }
 ```
+
+## Future Works
+* Try more word-level feature on relevence model, such as, tfidf, bm25 etc..
+* Train it on more data sources for training relevence model.
+* Try more hyperparameters when training relevence model.
+* Figure out all of the openai API error types, and handle exceptions more precisely.
