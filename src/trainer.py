@@ -2,7 +2,7 @@ import os
 import torch
 from torchvision import datasets
 from torch.utils.data import DataLoader
-from relevence_model import QABert, QADataset
+from relevance_model import QABert, QADataset
 from torchvision.transforms import ToTensor
 from pytorch_lightning import Trainer, seed_everything
 
@@ -27,5 +27,5 @@ trainer = Trainer(
     strategy="ddp"
 )
 
-# trainer.fit(model, train_dataloader, test_dataloader)
-trainer.test(model, dev_dataloader, ckpt_path='ckpt_model/latest.ckpt')
+trainer.fit(model, train_dataloader, test_dataloader)
+trainer.test(model, test_dataloader, ckpt_path='ckpt_model/latest.ckpt')

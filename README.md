@@ -1,6 +1,6 @@
 # ChatBot-via-GPT
 ## Info
-This project creates a application via openai GPT3.5 API to generate text based on user's input. It will return most relevent answers.
+This project creates an application via openai GPT3.5 API to generate text based on user's input. It aims to return most relevant answers.
 
 ### Project Features:
 
@@ -14,7 +14,7 @@ This project creates a application via openai GPT3.5 API to generate text based 
 
 
 ## Project Dir
-* **data** - data files for training revelence_model.py
+* **data** - data files for training revelance_model.py
 * **ckpt_model** - relevance_model file
 * **src** - source code
     - **app.py** - server file exposing chat API
@@ -24,7 +24,7 @@ This project creates a application via openai GPT3.5 API to generate text based 
 * **.gitignore**
 * **README.md**
 
-### Download model file from following link and put it in **ckpt_model/latest.ckpt**
+### Download model file from following link and put it at **ckpt_model/latest.ckpt**
 
 **model file url**: https://drive.google.com/drive/folders/1sl-QlkxevvUGLlB1hJHd0Gj6tz3Fw4ZK?usp=share_link
 ## Install and Run
@@ -78,7 +78,7 @@ curl --location 'http://127.0.0.1:8000/query' \
     "traceid": "001",
     "text": "how are glacier caves formed?"
 }
-# response: return answers with relevent scores
+# response: return answers with relevant scores
 {
     "content": "how are glacier caves formed?",
     "traceid": "001",
@@ -121,7 +121,7 @@ curl --location 'http://127.0.0.1:8000/query' \
 * Train it on more data sources for training relevance model.
 * Try more hyperparameters when training relevance model.
 * Figure out all of the openai API error types, and handle exceptions more precisely.
-* multi-language relevance model.
+* Multi-language relevance model.
 
 ## Data Source
 ```

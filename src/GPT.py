@@ -1,7 +1,7 @@
 import os
 import openai
 import language_tool_python
-from relevence_model import QAInference
+from relevance_model import QAInference
 
 os.environ['OPENAI_API_KEY'] = 'OPENAI_API_KEY'
 qaInference = QAInference('ckpt_model/latest.ckpt')
@@ -9,11 +9,11 @@ qaInference = QAInference('ckpt_model/latest.ckpt')
 class GPT:
     def __init__(self) -> None:
         openai.api_key = os.getenv("OPENAI_API_KEY")
+        self.lang_tool = language_tool_python.LanguageTool('en-US')
 
     def chat(self, content):
         # correct spelling and grammer error
-        my_tool = language_tool_python.LanguageTool('en-US')
-        content = my_tool.correct(content)
+        content = self.lang_tool.correct(content)
         try:
             completion = openai.ChatCompletion.create(
                 presence_penalty=1,
