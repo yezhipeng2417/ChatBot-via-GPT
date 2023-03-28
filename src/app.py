@@ -2,14 +2,17 @@ from sanic import Sanic
 from sanic.response import json
 
 from GPT import GPT
+from sanic_cors import CORS  #加入扩展
+
 
 gpt = GPT()
-
 app = Sanic("GPTSever")
+CORS(app)
 
 @app.route('/query', methods=["POST"])
 async def query(request):
     data = request.json
+    print('request data', data)
     # user input
     text = data['text']
     # input id from upstream
