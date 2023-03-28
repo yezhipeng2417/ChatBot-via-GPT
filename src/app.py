@@ -10,8 +10,11 @@ app = Sanic("GPTSever")
 @app.route('/query', methods=["POST"])
 async def query(request):
     data = request.json
+    # user input
     text = data['text']
+    # input id from upstream
     traceid = data['traceid']
+    # call openai api
     status, responses = gpt.chat(text)
     if status:
         ret = {
@@ -27,9 +30,8 @@ async def query(request):
             'traceid': traceid,
             'responses': None,
             'status': status,
-            'error':responses
+            'error':str(responses)
         }
-    print(ret)
     return json(ret)
 
 if __name__ == '__main__':

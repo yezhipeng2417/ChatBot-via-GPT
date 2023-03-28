@@ -27,6 +27,9 @@ This project creates an application via openai GPT3.5 API to generate text based
 ### Download model file from the following link and put it at **ckpt_model/latest.ckpt**
 
 **model file url**: https://drive.google.com/drive/folders/1sl-QlkxevvUGLlB1hJHd0Gj6tz3Fw4ZK?usp=share_link
+
+### get your api keys in this page https://platform.openai.com/account/api-keys and fill it in GPT.py
+
 ## Install and Run
 ```python
 # create conda envs

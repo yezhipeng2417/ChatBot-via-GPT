@@ -14,6 +14,7 @@ from pytorch_lightning.callbacks.model_checkpoint import ModelCheckpoint
 
 
 class QADataset(Dataset):
+    # build dataset
     def __init__(self, data_path):
         data = pd.read_csv(data_path, sep='\t')
         data = data.sample(frac=1, random_state=42).reset_index()
@@ -21,7 +22,6 @@ class QADataset(Dataset):
         neg_data = data[data['Label']==0][:len(pos_data)]
         data = pd.concat([pos_data, neg_data], axis=0)
         data = data.sample(frac=1, random_state=42).reset_index()
-        # print(data)
         questions = data['Question'].to_list()
         sentences = data['Sentence'].to_list()
         self.qa_pair = [*zip(questions, sentences)]
@@ -147,10 +147,3 @@ class QAInference:
             out = self.model(x)
             out = [i[1] for i in out]
             return out
-
-
-if __name__ == "__main__":
-    qaInference = QAInference('ckpt_model/sample-demo-epoch03-val_loss0.57.ckpt')
-    x = [['how are glacier caves formed?', 'how are glacier caves formed?', "how a rocket engine works", "how are antibodies used in"], ["A partly submerged glacier cave on Perito Moreno Glacier", "A glacier cave is a cave formed within the ice of a glacier .", 'A rocket engine, or simply "rocket", is a jet engine that uses only stored propellant mass for forming its high speed propulsive jet .', 'The antibody recognizes a unique part of the foreign target, called an antigen .']]
-    out = qaInference.inference(x)
-    print(out)

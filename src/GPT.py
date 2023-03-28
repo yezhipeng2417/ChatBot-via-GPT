@@ -15,6 +15,7 @@ class GPT:
         # correct spelling and grammer error
         content = self.lang_tool.correct(content)
         try:
+            # call openai API
             completion = openai.ChatCompletion.create(
                 presence_penalty=1,
                 frequency_penalty=1,
@@ -26,6 +27,7 @@ class GPT:
                 ]
             )
             response = [i['message']['content'] for i in completion.choices]
+            # relevence model sort the response
             score = qaInference.inference([[content]*len(response), response])
             ret = [{'response': r, 'score': float(s)} for r, s in zip(response, score)]
             ret.sort(key=lambda x: x['score'], reverse=True)
